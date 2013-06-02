@@ -1,0 +1,33 @@
+Contents of /Users/khuala/Documents/study/apple/Conway J., Hillegass A. - iOS Programming: The Big Nerd Ranch Guide - 2011/05.Whereami/Whereami/Whereami/Whereami-Prefix.pch
+2.1 (tags/Apple/clang-163.7.1) (based on LLVM 3.0svn)
+-x
+objective-c
+-arch
+i386
+-fmessage-length=0
+-fdiagnostics-print-source-range-info
+-fdiagnostics-show-category=id
+-fdiagnostics-parseable-fixits
+-std=gnu99
+-fpascal-strings
+-O0
+-DDEBUG
+-isysroot
+/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+-fasm-blocks
+-mmacosx-version-min=10.6
+-gdwarf-2
+-fvisibility=hidden
+-fobjc-abi-version=2
+-fobjc-legacy-dispatch
+-DIBOutlet=__attribute__((iboutlet))
+-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))
+-DIBAction=void)__attribute__((ibaction)
+-iquote
+-iquote
+-I/Users/khuala/Documents/study/apple/Conway J., Hillegass A. - iOS Programming: The Big Nerd Ranch Guide - 2011/05.Whereami/Whereami/D/Whereami/Build/Products/Debug-iphonesimulator/include
+-F/Users/khuala/Documents/study/apple/Conway J., Hillegass A. - iOS Programming: The Big Nerd Ranch Guide - 2011/05.Whereami/Whereami/D/Whereami/Build/Products/Debug-iphonesimulator
+-ferror-limit=10
+-working-directory=/Users/khuala/Documents/study/apple/Conway J., Hillegass A. - iOS Programming: The Big Nerd Ranch Guide - 2011/05.Whereami/Whereami
+-Xclang
+-detailed-preprocessing-record
