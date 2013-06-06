@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6BE6B412142270780011D15F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE6B411142270780011D15F /* UIKit.framework */; };
+		6BE6B414142270780011D15F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE6B413142270780011D15F /* Foundation.framework */; };
+		6BE6B416142270780011D15F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE6B415142270780011D15F /* CoreGraphics.framework */; };
+		6BE6B41C142270780011D15F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6B41A142270780011D15F /* InfoPlist.strings */; };
+		6BE6B41E142270780011D15F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6B41D142270780011D15F /* main.m */; };
+		6BE6B422142270780011D15F /* UISearchDisplayTutorialAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6B421142270780011D15F /* UISearchDisplayTutorialAppDelegate.m */; };
+		6BE6B425142270780011D15F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6B423142270780011D15F /* MainWindow.xib */; };
+		6BE6B428142270780011D15F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6B427142270780011D15F /* RootViewController.m */; };
+		6BE6B42B142270780011D15F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6B429142270780011D15F /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6BE6B40D142270780011D15F /* UISearchDisplayTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UISearchDisplayTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BE6B411142270780011D15F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6BE6B413142270780011D15F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6BE6B415142270780011D15F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6BE6B419142270780011D15F /* UISearchDisplayTutorial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UISearchDisplayTutorial-Info.plist"; sourceTree = "<group>"; };
+		6BE6B41B142270780011D15F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6BE6B41D142270780011D15F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BE6B41F142270780011D15F /* UISearchDisplayTutorial-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UISearchDisplayTutorial-Prefix.pch"; sourceTree = "<group>"; };
+		6BE6B420142270780011D15F /* UISearchDisplayTutorialAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UISearchDisplayTutorialAppDelegate.h; sourceTree = "<group>"; };
+		6BE6B421142270780011D15F /* UISearchDisplayTutorialAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UISearchDisplayTutorialAppDelegate.m; sourceTree = "<group>"; };
+		6BE6B424142270780011D15F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		6BE6B426142270780011D15F /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		6BE6B427142270780011D15F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		6BE6B42A142270780011D15F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6BE6B40A142270780011D15F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE6B412142270780011D15F /* UIKit.framework in Frameworks */,
+				6BE6B414142270780011D15F /* Foundation.framework in Frameworks */,
+				6BE6B416142270780011D15F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6BE6B402142270780011D15F = {
+			isa = PBXGroup;
+			children = (
+				6BE6B417142270780011D15F /* UISearchDisplayTutorial */,
+				6BE6B410142270780011D15F /* Frameworks */,
+				6BE6B40E142270780011D15F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6BE6B40E142270780011D15F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6BE6B40D142270780011D15F /* UISearchDisplayTutorial.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6BE6B410142270780011D15F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BE6B411142270780011D15F /* UIKit.framework */,
+				6BE6B413142270780011D15F /* Foundation.framework */,
+				6BE6B415142270780011D15F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BE6B417142270780011D15F /* UISearchDisplayTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				6BE6B426142270780011D15F /* RootViewController.h */,
+				6BE6B427142270780011D15F /* RootViewController.m */,
+				6BE6B429142270780011D15F /* RootViewController.xib */,
+				6BE6B420142270780011D15F /* UISearchDisplayTutorialAppDelegate.h */,
+				6BE6B421142270780011D15F /* UISearchDisplayTutorialAppDelegate.m */,
+				6BE6B423142270780011D15F /* MainWindow.xib */,
+				6BE6B418142270780011D15F /* Supporting Files */,
+			);
+			path = UISearchDisplayTutorial;
+			sourceTree = "<group>";
+		};
+		6BE6B418142270780011D15F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BE6B419142270780011D15F /* UISearchDisplayTutorial-Info.plist */,
+				6BE6B41A142270780011D15F /* InfoPlist.strings */,
+				6BE6B41D142270780011D15F /* main.m */,
+				6BE6B41F142270780011D15F /* UISearchDisplayTutorial-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6BE6B40C142270780011D15F /* UISearchDisplayTutorial */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BE6B42E142270780011D15F /* Build configuration list for PBXNativeTarget "UISearchDisplayTutorial" */;
+			buildPhases = (
+				6BE6B409142270780011D15F /* Sources */,
+				6BE6B40A142270780011D15F /* Frameworks */,
+				6BE6B40B142270780011D15F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UISearchDisplayTutorial;
+			productName = UISearchDisplayTutorial;
+			productReference = 6BE6B40D142270780011D15F /* UISearchDisplayTutorial.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6BE6B404142270780011D15F /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 6BE6B407142270780011D15F /* Build configuration list for PBXProject "UISearchDisplayTutorial" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6BE6B402142270780011D15F;
+			productRefGroup = 6BE6B40E142270780011D15F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6BE6B40C142270780011D15F /* UISearchDisplayTutorial */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6BE6B40B142270780011D15F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE6B41C142270780011D15F /* InfoPlist.strings in Resources */,
+				6BE6B425142270780011D15F /* MainWindow.xib in Resources */,
+				6BE6B42B142270780011D15F /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6BE6B409142270780011D15F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE6B41E142270780011D15F /* main.m in Sources */,
+				6BE6B422142270780011D15F /* UISearchDisplayTutorialAppDelegate.m in Sources */,
+				6BE6B428142270780011D15F /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6BE6B41A142270780011D15F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE6B41B142270780011D15F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6BE6B423142270780011D15F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE6B424142270780011D15F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		6BE6B429142270780011D15F /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE6B42A142270780011D15F /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6BE6B42C142270780011D15F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6BE6B42D142270780011D15F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6BE6B42F142270780011D15F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UISearchDisplayTutorial/UISearchDisplayTutorial-Prefix.pch";
+				INFOPLIST_FILE = "UISearchDisplayTutorial/UISearchDisplayTutorial-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6BE6B430142270780011D15F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UISearchDisplayTutorial/UISearchDisplayTutorial-Prefix.pch";
+				INFOPLIST_FILE = "UISearchDisplayTutorial/UISearchDisplayTutorial-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6BE6B407142270780011D15F /* Build configuration list for PBXProject "UISearchDisplayTutorial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE6B42C142270780011D15F /* Debug */,
+				6BE6B42D142270780011D15F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BE6B42E142270780011D15F /* Build configuration list for PBXNativeTarget "UISearchDisplayTutorial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE6B42F142270780011D15F /* Debug */,
+				6BE6B430142270780011D15F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6BE6B404142270780011D15F /* Project object */;
+}
