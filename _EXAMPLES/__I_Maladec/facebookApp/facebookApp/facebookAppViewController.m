@@ -174,7 +174,7 @@
 
 - (void)initFacebook {
     if (!facebook) {
-        self.facebook = [[Facebook alloc] initWithAppId:@"331663473546996"];
+        self.facebook = [[Facebook alloc] initWithAppId:@"527673330624606"]; //527673330624606 //331663473546996
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         facebook.accessToken = [userDefaults objectForKey:@"AccessToken"];
