@@ -53,7 +53,7 @@
 
 - (IBAction)publishFBStream {
     [self initFacebook];
-    
+/*
     if ([facebook isSessionValid]) {        
         SBJSON *jsonWriter = [[SBJSON new] autorelease];
         
@@ -61,15 +61,16 @@
                                                                @"Always Running",
                                                                @"text",
                                                                @"http://itsti.me/",
-                                                               @"href", nil], nil];
-        
+                                                               @"href", nil], nil];        
         NSString *actionLinksStr = [jsonWriter stringWithObject:actionLinks];
+        
         NSDictionary* attachment = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    @"a long run", @"name",
+                                    @"A long run", @"name",
                                     @"The Facebook Running app", @"caption",
-                                    @"it is fun", @"description",
+                                    @"IT is fun", @"description",
                                     @"http://itsti.me/", @"href", nil];
         NSString *attachmentStr = [jsonWriter stringWithObject:attachment];
+        
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        @"Share on Facebook",  @"user_message_prompt",
                                        actionLinksStr, @"action_links",
@@ -83,6 +84,39 @@
     } else {
         [self loginToFacebook]; 
     }
+*/    
+    
+    if ([facebook isSessionValid]) {
+        SBJSON *jsonWriter = [[SBJSON new] autorelease];
+        
+        NSDictionary* actionLinks = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                               @"Always Running",
+                                                               @"text",
+                                                               @"http://itsti.me/",
+                                                               @"href", nil], nil];        
+        NSString *actionLinksStr = [jsonWriter stringWithObject:actionLinks];
+        
+        NSDictionary* attachment = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    @"a long run", @"name",
+                                    @"The Facebook Running app", @"caption",
+                                    @"it is fun", @"description",
+                                    @"http://itsti.me/", @"href", nil];
+        NSString *attachmentStr = [jsonWriter stringWithObject:attachment];
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       @"Share on Facebook",  @"user_message_prompt",
+                                       actionLinksStr, @"action_links",
+                                       attachmentStr, @"attachment",
+                                       @"Это отличный сайт! http://imaladec.com", @"message", nil];
+        
+        [facebook dialog:@"stream.publish" //
+            andParams:params
+             andDelegate:self]; 
+                                       
+        
+    } else {
+        [self loginToFacebook]; 
+    }
 }
 
 - (IBAction)publishImageFBStream {
@@ -90,13 +124,17 @@
     
     if ([facebook isSessionValid]) {    
         SBJSON *jsonWriter = [[SBJSON new] autorelease];
-        
+/*
         NSDictionary* actionLinks = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                               @"www.imaladec.com",
-                                                               @"text",
-                                                               @"http://www.imaladec.com/",
-                                                               @"href", nil], nil];
-        
+//                                                               @"www.imaladec.com",
+//                                                               @"text",
+//                                                               @"http://www.imaladec.com/",
+//                                                               @"href", nil], nil];
+                                                                       
+                                                               @"www.tut.by",@"text", 
+                                                               @"http://apple.com/", @"href", nil], nil];
+                
+                                                               
         NSString *actionLinksStr = [jsonWriter stringWithObject:actionLinks];
         
         NSDictionary* imageShare = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -106,7 +144,7 @@
                                     nil];
         
         NSDictionary* attachment = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    @"", @"caption",
+                                    @"Какая-то инфа", @"caption",
                                     [NSArray arrayWithObjects:imageShare, nil], @"media",
                                     nil];
         
@@ -121,6 +159,39 @@
         [facebook dialog: @"stream.publish"
                andParams: params
              andDelegate:self];
+*/        
+        NSDictionary* actionLinks = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:                                                               
+                                    @"http://veqtr.com/",@"text",
+                                    @"http://veqtr.com/", @"href", nil], nil];
+        
+        
+        NSString *actionLinksStr = [jsonWriter stringWithObject:actionLinks];
+        
+        NSDictionary* imageShare = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    @"image", @"type",
+                                    @"http://veqtr.com/image/user/92/1.jpg", @"src",
+                                    @"http://veqtr.com/", @"href",
+                                    nil];
+        
+        NSDictionary* attachment = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    @"", @"caption",
+                                    @"текст для расшаривания", @"description",
+                                    [NSArray arrayWithObjects:imageShare, nil], @"media",
+                                    nil];
+        
+        NSString *attachmentStr = [jsonWriter stringWithObject:attachment];
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       @"Share on Facebook",  @"user_message_prompt",
+                                       actionLinksStr, @"action_links",
+                                       attachmentStr, @"attachment",
+//                                     @"Сообщение2 - Это отличный сайт!", @"message",
+                                       nil];
+        
+        [facebook dialog: @"stream.publish"
+               andParams: params
+             andDelegate:self];
+        
         
     } else {
         [self loginToFacebook]; 
@@ -174,7 +245,7 @@
 
 - (void)initFacebook {
     if (!facebook) {
-        self.facebook = [[Facebook alloc] initWithAppId:@"527673330624606"]; //527673330624606 //331663473546996
+        self.facebook = [[Facebook alloc] initWithAppId:@"527673330624606"] ;//@"527673330624606"]; //527673330624606 //331663473546996
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         facebook.accessToken = [userDefaults objectForKey:@"AccessToken"];
