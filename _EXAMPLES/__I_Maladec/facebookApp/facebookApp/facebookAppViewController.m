@@ -47,6 +47,7 @@
         NSString *path = [[NSBundle mainBundle] pathForResource:@"FBpermissions" ofType:@"plist"];
         NSDictionary *settingsDic = [NSDictionary dictionaryWithContentsOfFile:path];
         NSArray *permissions = [settingsDic objectForKey:@"facebookPermissions"];
+        NSLog(@"%@",permissions);
         [facebook authorize:permissions delegate:self];  
     }
 }
