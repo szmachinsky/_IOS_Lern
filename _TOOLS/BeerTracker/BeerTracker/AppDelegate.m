@@ -16,6 +16,9 @@
 	[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.22f green:0.17f blue:0.13f alpha:1.00f]];
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor greenColor]}];
     
+    NSString *s2 = NSHomeDirectory();
+    NSLog(@"/%@/",s2);
+    
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"BeerModel"]; //zs
     [self addDemoData];
     return YES;

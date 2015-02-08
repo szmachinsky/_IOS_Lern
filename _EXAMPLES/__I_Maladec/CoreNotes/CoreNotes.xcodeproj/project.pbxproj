@@ -19,6 +19,7 @@
 		35B70C0C1504B810003F6B7C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B70C0B1504B810003F6B7C /* DetailViewController.m */; };
 		35B70C0F1504B810003F6B7C /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B70C0D1504B810003F6B7C /* MasterViewController.xib */; };
 		35B70C121504B810003F6B7C /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B70C101504B810003F6B7C /* DetailViewController.xib */; };
+		D53FF22F1A87DC4C0055FAE6 /* _Liska.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D53FF22E1A87DC4C0055FAE6 /* _Liska.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		35B70C0B1504B810003F6B7C /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		35B70C0E1504B810003F6B7C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
 		35B70C111504B810003F6B7C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D53FF22E1A87DC4C0055FAE6 /* _Liska.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = _Liska.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		35B70BF91504B810003F6B7C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D53FF22E1A87DC4C0055FAE6 /* _Liska.jpg */,
 				35B70BFA1504B810003F6B7C /* CoreNotes-Info.plist */,
 				35B70BFB1504B810003F6B7C /* InfoPlist.strings */,
 				35B70BFE1504B810003F6B7C /* main.m */,
@@ -163,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D53FF22F1A87DC4C0055FAE6 /* _Liska.jpg in Resources */,
 				35B70BFD1504B810003F6B7C /* InfoPlist.strings in Resources */,
 				35B70C0F1504B810003F6B7C /* MasterViewController.xib in Resources */,
 				35B70C121504B810003F6B7C /* DetailViewController.xib in Resources */,
@@ -300,6 +304,7 @@
 				35B70C171504B810003F6B7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

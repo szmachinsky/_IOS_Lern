@@ -28,6 +28,10 @@
     masterViewController.managedObjectContext = self.managedObjectContext;
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"_Liska" withExtension:@"jpg"];
+    NSLog(@"url_Liska=/%@/",url);
+    
     return YES;
 }
 
@@ -119,6 +123,8 @@
         return __managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"CoreNotes" withExtension:@"momd"];
+    NSLog(@"url_CoreNotes.momd=/%@/",modelURL);
+    
     __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return __managedObjectModel;
 }
@@ -134,7 +140,8 @@
         return __persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"CoreNotes.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"CoreNotes1.sqlite"];
+    NSLog(@"url_CoreNotes.sqlite=/%@/",storeURL);
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
