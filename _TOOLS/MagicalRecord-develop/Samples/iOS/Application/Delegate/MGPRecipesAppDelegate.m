@@ -42,6 +42,7 @@ static NSString * const kRecipesStoreName = @"Recipes.sqlite";
         {
             NSError *error;
 			BOOL success = [fileManager copyItemAtPath:defaultStorePath toPath:[storeURL path] error:&error];
+            NSLog(@"copy = /%@/ to /%@/",defaultStorePath,[storeURL path]);
             if (!success)
             {
                 NSLog(@"Failed to install default recipe store");

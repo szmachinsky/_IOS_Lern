@@ -45,6 +45,7 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
 	BeerViewController *upcoming = segue.destinationViewController;
     if ([[segue identifier] isEqualToString:@"editBeer"]) {
         
@@ -53,8 +54,12 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
         upcoming.beer = beer;
         
 	} else if ([segue.identifier isEqualToString:@"addBeer"]) {
-		upcoming.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:upcoming action:@selector(cancelAdd)];
-		upcoming.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonSystemItemAdd target:upcoming action:@selector(addNewBeer)];
+		upcoming.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+//                                                                                     style:UIBarButtonSystemItemCancel target:upcoming action:@selector(cancelAdd)];
+                                                                                     style:UIBarButtonItemStylePlain target:upcoming action:@selector(cancelAdd)];
+		upcoming.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+//                                                                                      style:UIBarButtonSystemItemAdd target:upcoming action:@selector(addNewBeer)];
+                                                                                      style:UIBarButtonItemStyleDone target:upcoming action:@selector(addNewBeer)];
 	}
 }
 
@@ -64,11 +69,11 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
     // 2. Determine if it is ascending
     BOOL ascending = [sortKey isEqualToString:SORT_KEY_RATING] ? NO : YES;
     // 3. Fetch entities with MagicalRecord
-    self.beers = [[Beer findAllSortedBy:sortKey ascending:ascending] mutableCopy]; //zs
+    self.beers = [[Beer MR_findAllSortedBy:sortKey ascending:ascending] mutableCopy]; //zs
 }
 
 - (void)saveContext {
-    [[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait]; //zs
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait]; //zs
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -118,7 +123,7 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
             [ImageSaver deleteImageAtPath:beerToRemove.beerDetails.image];
         }
         // Deleting an Entity with MagicalRecord
-        [beerToRemove deleteEntity];
+        [beerToRemove MR_deleteEntity];
         [self saveContext];
         [self.beers removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade]; //zs
@@ -161,13 +166,18 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
     NSString *searchText = self.searchBar.text;
     // 2. Do a fetch on the beers that match Predicate criteria.
     // In this case, if the name contains the string
-    self.beers = [[Beer findAllSortedBy:SORT_KEY_NAME ascending:YES withPredicate:[NSPredicate predicateWithFormat:@"name contains[c] %@", searchText] inContext:[NSManagedObjectContext defaultContext]] mutableCopy];
+    self.beers = [[Beer MR_findAllSortedBy:SORT_KEY_NAME ascending:YES withPredicate:[NSPredicate predicateWithFormat:@"name contains[c] %@", searchText] inContext:[NSManagedObjectContext MR_defaultContext]] mutableCopy];
     // 3. Reload the table to show the query results.
     [self.tableView reloadData];
 }
 
 // Change the sort key used when fetching object.
 - (IBAction)changeSortKey:(id)sender {
+    
+    NSLog(@"OOPS!!!");
+    [self performSelector:@selector(runThread) withObject:nil afterDelay:1.0];
+    return;
+    
 	switch ([(UISegmentedControl*)sender selectedSegmentIndex]) {
 		case 0: {
 			[[NSUserDefaults standardUserDefaults] setObject:SORT_KEY_RATING forKey:WB_SORT_KEY];
@@ -185,5 +195,93 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
 			break;
 	}
 }
+
+//===================================================================================
+-(void)runThread
+{
+    [self performSelectorInBackground:@selector(addDemoDataInThread2) withObject:nil];
+}
+
+
+- (void)addDemoDataInThread1
+{
+    NSLog(@"add in backgound - begin");
+    
+    
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        NSLog(@"RUN1");
+        
+        Beer *blondAle = [Beer MR_createEntityInContext:localContext];
+        blondAle.name  = @"Blond_NEW1!!! Ale";
+        blondAle.beerDetails = [BeerDetails MR_createEntityInContext:localContext];
+        blondAle.beerDetails.rating = @4;
+        [ImageSaver saveImageToDisk:[UIImage imageNamed:@"blond.jpg"] andToBeer:blondAle];
+        
+    } completion:^(BOOL success, NSError *error) {
+        NSLog(@"RUN2");
+        [self fetchAllBeers];
+        [self.tableView reloadData];
+    }];
+    
+    
+    NSLog(@"add in backgound - end");
+}
+
+- (void)addDemoDataInThread2
+{
+    NSLog(@"add in backgound - begin");
+    
+    NSManagedObjectContext *lContext = [NSManagedObjectContext MR_context];
+    Beer *blondAle = [Beer MR_createEntityInContext:lContext];
+    blondAle.name  = @"Blond_NEW2!!! Ale";
+    blondAle.beerDetails = [BeerDetails MR_createEntityInContext:lContext];
+    blondAle.beerDetails.rating = @4;
+    [ImageSaver saveImageToDisk:[UIImage imageNamed:@"blond.jpg"] andToBeer:blondAle];
+    
+//    NSLog(@"RUN0");
+//    [lContext MR_saveToPersistentStoreAndWait];
+//    NSLog(@"RUN00");
+    
+    [lContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error){
+        NSLog(@"RUN22 %d",contextDidSave);
+        [self fetchAllBeers];
+        [self.tableView reloadData];
+    }];
+    
+    
+    NSLog(@"add in backgound - end");
+}
+
+- (void)addDemoDataInThread3
+{
+    NSLog(@"add in backgound - begin");
+    
+    NSManagedObjectContext *lContext = [NSManagedObjectContext MR_context];
+    Beer *blondAle = [Beer MR_createEntityInContext:lContext];
+    blondAle.name  = @"Blond_NEW2!!! Ale";
+    blondAle.beerDetails = [BeerDetails MR_createEntityInContext:lContext];
+    blondAle.beerDetails.rating = @4;
+    [ImageSaver saveImageToDisk:[UIImage imageNamed:@"blond.jpg"] andToBeer:blondAle];
+    NSLog(@"RUN0");
+    [lContext MR_saveToPersistentStoreAndWait];
+    NSLog(@"RUN00");
+    
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        NSLog(@"RUN1");
+        // Do your work to be saved here, against the `localContext` instance
+        // Everything you do in this block will occur on a background thread
+        Beer *blondAle_ = [blondAle MR_inContext:localContext];
+        blondAle_.name  = @"Blond_NEW_222!!!";
+        NSLog(@"RUN11");
+    } completion:^(BOOL success, NSError *error) {
+        NSLog(@"RUN2");
+        [self fetchAllBeers];
+        [self.tableView reloadData];
+    }];
+    
+    
+    NSLog(@"add in backgound - end");
+}
+
 
 @end

@@ -12,6 +12,7 @@
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
-	#define MR_SHORTHAND
+//	#define MR_SHORTHAND
 	#import "CoreData+MagicalRecord.h"
+//    #import "MagicalRecord.h"
 #endif

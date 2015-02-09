@@ -8,6 +8,8 @@
 #import "Beer.h" //zs
 #import "BeerDetails.h" //zs
 
+static NSString * const kRecipesStoreName = @"BeerModel1.sqlite"; //zss
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -16,8 +18,20 @@
 	[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.22f green:0.17f blue:0.13f alpha:1.00f]];
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor greenColor]}];
     
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"BeerModel"]; //zs
-//    [self addDemoData];
+    
+    [MagicalRecord setLoggingLevel:MagicalRecordLoggingLevelVerbose];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
+//    [MagicalRecord setupCoreDataStack];
+#ifdef DEBUG
+    NSLog(@"---DEBUG---");
+#endif
+    
+    // Override point for customization after application launch.
+    //    self.window.backgroundColor = [UIColor whiteColor];
+//    self.recipeListController.managedObjectContext = [NSManagedObjectContext MR_defaultContext];
+    
+///   [MagicalRecord setupCoreDataStackWithStoreNamed:@"BeerModel"]; //zs
+    [self addDemoData];
     return YES;
 }
 
@@ -26,42 +40,50 @@
     // Setup App with prefilled Beer items.
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"MR_HasPrefilledBeers"]) {
         // Create Blond Ale
-        Beer *blondAle = [Beer createEntity];
+        Beer *blondAle = [Beer MR_createEntity];
         blondAle.name  = @"Blond Ale";
-        blondAle.beerDetails = [BeerDetails createEntity];
+        blondAle.beerDetails = [BeerDetails MR_createEntity];
         blondAle.beerDetails.rating = @4;
         [ImageSaver saveImageToDisk:[UIImage imageNamed:@"blond.jpg"] andToBeer:blondAle];
         
         // Create Wheat Beer
-        Beer *wheatBeer = [Beer createEntity];
+        Beer *wheatBeer = [Beer MR_createEntity];
         wheatBeer.name  = @"Wheat Beer";
-        wheatBeer.beerDetails = [BeerDetails createEntity];
+        wheatBeer.beerDetails = [BeerDetails MR_createEntity];
         wheatBeer.beerDetails.rating = @2;
         [ImageSaver saveImageToDisk:[UIImage imageNamed:@"wheat.jpg"] andToBeer:wheatBeer];
         
         // Create Pale Lager
-        Beer *paleLager = [Beer createEntity];
+        Beer *paleLager = [Beer MR_createEntity];
         paleLager.name  = @"Pale Lager";
-        paleLager.beerDetails = [BeerDetails createEntity];
+        paleLager.beerDetails = [BeerDetails MR_createEntity];
         paleLager.beerDetails.rating = @3;
         [ImageSaver saveImageToDisk:[UIImage imageNamed:@"pale.jpg"] andToBeer:paleLager];
         
         // Create Stout
-        Beer *stout = [Beer createEntity];
+        Beer *stout = [Beer MR_createEntity];
         stout.name  = @"Stout Lager";
-        stout.beerDetails = [BeerDetails createEntity];
+        stout.beerDetails = [BeerDetails MR_createEntity];
         stout.beerDetails.rating = @5;
         [ImageSaver saveImageToDisk:[UIImage imageNamed:@"stout.jpg"] andToBeer:stout];
         
         // Save Managed Object Context
-        [[NSManagedObjectContext defaultContext] saveToPersistentStoreWithCompletion:nil];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
         
         // Set User Default to prevent another preload of data on startup.
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"MR_HasPrefilledBeers"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-   
+//    [self performSelectorInBackground:@selector(addDemoDataInThread) withObject:nil];
 }
+
+
+- (void)addDemoDataInThread
+{
+    NSLog(@"add in backgound - begin");
+    NSLog(@"add in backgound - end");
+}
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

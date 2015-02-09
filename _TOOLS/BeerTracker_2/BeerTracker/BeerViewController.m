@@ -23,11 +23,11 @@
     
     // 1. If there is no beer, create new Beer //zs
     if (!self.beer) {
-        self.beer = [Beer createEntity];
+        self.beer = [Beer MR_createEntity];
     }
     // 2. If there are no beer details, create new BeerDetails
     if (!self.beer.beerDetails) {
-        self.beer.beerDetails = [BeerDetails createEntity];
+        self.beer.beerDetails = [BeerDetails MR_createEntity];
     }
     // View setup
     // 3. Set the title, name, note field and rating of the beer
@@ -61,7 +61,7 @@
 }
 
 - (void)cancelAdd {
-    [self.beer deleteEntity]; //zs
+    [self.beer MR_deleteEntity]; //zs
 
 	[self.navigationController popViewControllerAnimated:YES];
 }
@@ -71,7 +71,7 @@
 }
 
 - (void)saveContext {
-    [[NSManagedObjectContext defaultContext] saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) { //zs
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) { //zs
         if (success) {
             NSLog(@"You successfully saved your context.");
         } else if (error) {

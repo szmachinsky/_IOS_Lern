@@ -66,6 +66,7 @@ NSString * const kMagicalRecordPSCDidCompleteiCloudSetupNotification = @"kMagica
 {
     NSURL *url = [storeFileName isKindOfClass:[NSURL class]] ? storeFileName : [NSPersistentStore MR_urlForStoreName:storeFileName];
     NSError *error = nil;
+    NSLog(@"file2=%@",url);
     
     [self MR_createPathToStoreFileIfNeccessary:url];
     
@@ -282,6 +283,7 @@ NSString * const kMagicalRecordPSCDidCompleteiCloudSetupNotification = @"kMagica
     NSManagedObjectModel *model = [NSManagedObjectModel MR_defaultManagedObjectModel];
     NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     
+    NSLog(@"file1=%@",storeFileName);
     [psc MR_addSqliteStoreNamed:storeFileName withOptions:options];
     return psc;
 }
