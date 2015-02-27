@@ -13,6 +13,7 @@
 @synthesize delegate;
 @synthesize detailItem;
 @synthesize note;
+@synthesize detail;
 
 - (void)viewDidUnload
 {
@@ -32,10 +33,19 @@
     
     note.text = [[detailItem valueForKey:@"note"] description];
     self.title = [[detailItem valueForKey:@"timeStamp"] description];
+    
+    NSString *str = [[detailItem valueForKey:@"detail"] description];
+    if (str) {
+        detail.text = str;
+    } else {
+        detail.text = @"???";
+    }
 }
 
 - (void)pressDone {
     [detailItem setValue:note.text forKey:@"note"];
+    
+    [detailItem setValue:detail.text forKey:@"detail"];
     
     if ([delegate respondsToSelector:@selector(saveContext)]) {
         [delegate performSelector:@selector(saveContext)];

@@ -122,7 +122,10 @@
     {
         return __managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"CoreNotes" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle]
+                       URLForResource:@"CoreNotes_2"
+                       withExtension:@"mom"  subdirectory:@"CoreNotes.momd"];    
+    
     NSLog(@"url_CoreNotes.momd=/%@/",modelURL);
     
     __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];

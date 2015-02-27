@@ -13,5 +13,6 @@
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) IBOutlet UITextView *note;
+@property (weak, nonatomic) IBOutlet UITextView *detail;
 
 @end
