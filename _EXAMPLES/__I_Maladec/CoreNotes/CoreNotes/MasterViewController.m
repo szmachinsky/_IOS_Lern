@@ -219,6 +219,8 @@
     [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
     [newManagedObject setValue:@"iMaladec" forKey:@"note"];
     
+    [newManagedObject setValue:@"comment" forKey:@"detail"]; //zs
+    
     [self saveContext];
 }
 

@@ -10,6 +10,9 @@
 
 #import "MasterViewController.h"
 
+//#define nameDB @"CoreNotes"
+#define nameDB @"CoreNotes_2"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -123,13 +126,22 @@
         return __managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle]
-                       URLForResource:@"CoreNotes_2"
+                       URLForResource:nameDB //"CoreNotes" "CoreNotes_2"
                        withExtension:@"mom"  subdirectory:@"CoreNotes.momd"];    
     
     NSLog(@"url_CoreNotes.momd=/%@/",modelURL);
     
     __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return __managedObjectModel;
+}
+
+
+- (NSDictionary *)_persistentStoreOptions {
+    return @{ NSInferMappingModelAutomaticallyOption: @YES,
+              NSMigratePersistentStoresAutomaticallyOption: @YES
+//              ,
+//              NSSQLitePragmasOption: @{@"synchronous": @"OFF"}
+              };
 }
 
 /**
@@ -148,7 +160,13 @@
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    
+    NSDictionary *optionsDictionary = [self _persistentStoreOptions];//[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],             NSMigratePersistentStoresAutomaticallyOption, NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    
+//    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    BOOL ok = [__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error];
+    if (!ok)
+        
     {
         /*
          Replace this implementation with code to handle the error appropriately.

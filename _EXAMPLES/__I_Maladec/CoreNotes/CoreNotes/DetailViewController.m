@@ -34,7 +34,7 @@
     note.text = [[detailItem valueForKey:@"note"] description];
     self.title = [[detailItem valueForKey:@"timeStamp"] description];
     
-    NSString *str = [[detailItem valueForKey:@"detail"] description];
+    NSString *str = [[detailItem valueForKey:@"detail"] description]; //zs
     if (str) {
         detail.text = str;
     } else {
@@ -45,7 +45,7 @@
 - (void)pressDone {
     [detailItem setValue:note.text forKey:@"note"];
     
-    [detailItem setValue:detail.text forKey:@"detail"];
+//    [detailItem setValue:detail.text forKey:@"detail"]; //zs
     
     if ([delegate respondsToSelector:@selector(saveContext)]) {
         [delegate performSelector:@selector(saveContext)];
