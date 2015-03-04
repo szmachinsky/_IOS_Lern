@@ -10,8 +10,8 @@
 
 #import "MasterViewController.h"
 
-//#define nameDB @"CoreNotes"
-#define nameDB @"CoreNotes_2"
+#define nameDB @"CoreNotes"
+//#define nameDB @"CoreNotes 2"
 
 @implementation AppDelegate
 
@@ -125,13 +125,17 @@
     {
         return __managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle]
-                       URLForResource:nameDB //"CoreNotes" "CoreNotes_2"
-                       withExtension:@"mom"  subdirectory:@"CoreNotes.momd"];    
+    NSURL *modelURL1 = [[NSBundle mainBundle]
+                       URLForResource:@"CoreNotes 2"
+                       withExtension:@"mom"  subdirectory:@"CoreNotes.momd"];
     
-    NSLog(@"url_CoreNotes.momd=/%@/",modelURL);
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CoreNotes 2" ofType:@"momd"]; //zs
+    NSURL *modelURL2 = [NSURL fileURLWithPath:path];
     
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    NSLog(@"url_CoreNotes.momd=/%@/",modelURL1);
+    NSLog(@"url_CoreNotes.momd=/%@/",modelURL2);
+   
+    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL1];
     return __managedObjectModel;
 }
 
@@ -155,13 +159,14 @@
         return __persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"CoreNotes1.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"CoreNotes.sqlite"];
     NSLog(@"url_CoreNotes.sqlite=/%@/",storeURL);
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
-    NSDictionary *optionsDictionary = [self _persistentStoreOptions];//[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],             NSMigratePersistentStoresAutomaticallyOption, NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    NSDictionary *optionsDictionary = @{ NSInferMappingModelAutomaticallyOption: @YES,
+                                         NSMigratePersistentStoresAutomaticallyOption: @YES};
     
 //    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     BOOL ok = [__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error];

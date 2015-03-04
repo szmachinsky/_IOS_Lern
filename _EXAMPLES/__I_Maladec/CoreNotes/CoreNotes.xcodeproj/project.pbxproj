@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		234B313A1AA0B2D000F5648C /* CoreNotes_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreNotes_2.xcdatamodel; sourceTree = "<group>"; };
+		234B313A1AA0B2D000F5648C /* CoreNotes 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreNotes 2.xcdatamodel"; sourceTree = "<group>"; };
 		35B70BEC1504B810003F6B7C /* CoreNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B70BF01504B810003F6B7C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		35B70BF21504B810003F6B7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -313,10 +313,10 @@
 		35B70C041504B810003F6B7C /* CoreNotes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				234B313A1AA0B2D000F5648C /* CoreNotes_2.xcdatamodel */,
+				234B313A1AA0B2D000F5648C /* CoreNotes 2.xcdatamodel */,
 				35B70C051504B810003F6B7C /* CoreNotes.xcdatamodel */,
 			);
-			currentVersion = 234B313A1AA0B2D000F5648C /* CoreNotes_2.xcdatamodel */;
+			currentVersion = 234B313A1AA0B2D000F5648C /* CoreNotes 2.xcdatamodel */;
 			path = CoreNotes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
