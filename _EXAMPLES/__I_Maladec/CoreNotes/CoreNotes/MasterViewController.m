@@ -219,7 +219,9 @@
     [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
     [newManagedObject setValue:@"New Item" forKey:@"note"];
     
+#if _DATA_VERS == 1
     [newManagedObject setValue:@"comment" forKey:@"details"]; //zs
+#endif
     
     [self saveContext];
 }

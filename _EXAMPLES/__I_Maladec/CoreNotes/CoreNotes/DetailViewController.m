@@ -31,21 +31,31 @@
                              action:@selector(pressDone)];
 	self.navigationItem.rightBarButtonItem = done; 
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     note.text = [[detailItem valueForKey:@"note"] description];
     self.title = [[detailItem valueForKey:@"timeStamp"] description];
     
+#if _DATA_VERS == 1
     NSString *str = [[detailItem valueForKey:@"details"] description]; //zs
     if (str) {
         detail.text = str;
     } else {
         detail.text = @"???";
     }
+#endif
 }
 
 - (void)pressDone {
     [detailItem setValue:note.text forKey:@"note"];
     
+#if _DATA_VERS == 1
     [detailItem setValue:detail.text forKey:@"details"]; //zs
+#endif
     
     if ([delegate respondsToSelector:@selector(saveContext)]) {
         [delegate performSelector:@selector(saveContext)];

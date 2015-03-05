@@ -128,14 +128,23 @@
     NSURL *modelURL1 = [[NSBundle mainBundle]
                        URLForResource:@"CoreNotes 2"
                        withExtension:@"mom"  subdirectory:@"CoreNotes.momd"];
+    NSLog(@"1 url_CoreNotes.momd=%@",modelURL1);
+    NSURL *modelURL = modelURL1;
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"CoreNotes 2" ofType:@"momd"]; //zs
-    NSURL *modelURL2 = [NSURL fileURLWithPath:path];
     
-    NSLog(@"url_CoreNotes.momd=/%@/",modelURL1);
-    NSLog(@"url_CoreNotes.momd=/%@/",modelURL2);
-   
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL1];
+    
+    NSURL *modelURL2;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CoreNotes" ofType:@"momd"]; //zs
+    if (path) {
+        modelURL2 = [NSURL fileURLWithPath:path];
+        NSLog(@"2 url_CoreNotes.momd=%@",modelURL2);
+        modelURL = modelURL2;
+    }
+    
+    NSURL *modelURL3 = [[NSBundle mainBundle] URLForResource:@"CoreNotes" withExtension:@"momd"];
+    NSLog(@"3 url_CoreNotes.momd=%@",modelURL3);
+    
+    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return __managedObjectModel;
 }
 
@@ -165,11 +174,17 @@
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
-    NSDictionary *optionsDictionary = @{ NSInferMappingModelAutomaticallyOption: @YES,
-                                         NSMigratePersistentStoresAutomaticallyOption: @YES};
+    NSDictionary *options1 = @{ NSInferMappingModelAutomaticallyOption: @YES,
+                                NSMigratePersistentStoresAutomaticallyOption: @YES};
     
-//    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
-    BOOL ok = [__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error];
+    NSDictionary *options2 = @{
+                              NSMigratePersistentStoresAutomaticallyOption:@YES
+                              ,NSInferMappingModelAutomaticallyOption:@YES
+                              ,NSSQLitePragmasOption: @{@"journal_mode": @"DELETE"}
+      };
+    
+    
+    BOOL ok = [__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options1 error:&error];
     if (!ok)
         
     {
@@ -198,7 +213,8 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }
+    
     
     return __persistentStoreCoordinator;
 }

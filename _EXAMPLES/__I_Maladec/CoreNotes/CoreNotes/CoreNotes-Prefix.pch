@@ -13,3 +13,16 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+
+
+#define _DATA_VERS 1
+#define nameDB @"CoreNotes"
+
+//#if _DATA_VERS == 0
+//# define nameDB @"CoreNotes"
+//#endif
+//
+//#if _DATA_VERS == 1
+//# define nameDB @"CoreNotes 2"
+//#endif
+
