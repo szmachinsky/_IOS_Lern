@@ -199,7 +199,7 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
 //===================================================================================
 -(void)runThread
 {
-    [self performSelectorInBackground:@selector(addDemoDataInThread2) withObject:nil];
+    [self performSelectorInBackground:@selector(addDemoDataInThread1) withObject:nil];
 }
 
 
@@ -258,7 +258,7 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
     
     NSManagedObjectContext *lContext = [NSManagedObjectContext MR_context];
     Beer *blondAle = [Beer MR_createEntityInContext:lContext];
-    blondAle.name  = @"Blond_NEW2!!! Ale";
+    blondAle.name  = @"Blond_NEW3!!! Ale";
     blondAle.beerDetails = [BeerDetails MR_createEntityInContext:lContext];
     blondAle.beerDetails.rating = @4;
     [ImageSaver saveImageToDisk:[UIImage imageNamed:@"blond.jpg"] andToBeer:blondAle];
@@ -271,7 +271,7 @@ NSString * const WB_SORT_KEY     = @"WB_SORT_KEY";
         // Do your work to be saved here, against the `localContext` instance
         // Everything you do in this block will occur on a background thread
         Beer *blondAle_ = [blondAle MR_inContext:localContext];
-        blondAle_.name  = @"Blond_NEW_222!!!";
+        blondAle_.name  = @"Blond_NEW_333!!!";
         NSLog(@"RUN11");
     } completion:^(BOOL success, NSError *error) {
         NSLog(@"RUN2");

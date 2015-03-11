@@ -16,8 +16,10 @@ static NSString * const kRecipesStoreName = @"Recipes.sqlite";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self copyDefaultStoreIfNecessary];
-    [MagicalRecord setLoggingLevel:MagicalRecordLoggingLevelVerbose];
-    [MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
+    
+    [MagicalRecord setLoggingLevel:MagicalRecordLoggingLevelVerbose]; //MagicalRecordLoggingLevelWarn/MagicalRecordLoggingLevelInfo
+    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName]; //open stack
 
     // Override point for customization after application launch.
 //    self.window.backgroundColor = [UIColor whiteColor];
